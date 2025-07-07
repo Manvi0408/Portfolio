@@ -1,9 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+// Dynamically import CanvasRevealEffect with SSR disabled
+const CanvasRevealEffect = dynamic(
+  () => import("@/components/ui/canvas-reveal-effect").then((m) => m.CanvasRevealEffect),
+  { ssr: false }
+);
 import { MagicButton } from "@/components/ui/magic-button";
 
 export const Approach = () => {
